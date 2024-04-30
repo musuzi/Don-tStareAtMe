@@ -32,6 +32,7 @@ public class HealthControll : MonoBehaviour
             if(Probability.SetProbabilityEventSingle(characterAttribute.MissRate))
             {
                 Debug.Log("miss!!");
+                TriggerInvulnerable();
                 return;
             }
         }
