@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd898e0e9dabdb641947e22e0f57ad5d, type: 3}
+  m_Name: D1
+  m_EditorClassIdentifier: 
+  talentName: d1
+  talentDescription: "\u8E29\u8E29\u8E29\u8E29\u8E29\u8E29\u731C\u6D4B"
+  talentID: 0
+  talentType: 0
+  talentSprite: {fileID: 0}
+  MaxHealth: 0
+  Health: 0
+  MaxSan: 0
+  San: 0
+  PhyDamage: 0
+  MaDamage: 0
+  MissRate: 0
+  PhyDenfend: 0
+  MaDenfend: 0
+  Speed: 0
+  CriticalRate: 0
+  CriticalDamageMagnification: 0
+  invulnerableDuration: 0
