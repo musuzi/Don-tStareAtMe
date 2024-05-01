@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd898e0e9dabdb641947e22e0f57ad5d, type: 3}
   m_Name: D1
   m_EditorClassIdentifier: 
-  talentName: 
-  talentDescription: 
+  talentName: d1
+  talentDescription: "\u8E29\u8E29\u8E29\u8E29\u8E29\u8E29\u731C\u6D4B"
   talentID: 0
   talentType: 0
   talentSprite: {fileID: 0}
