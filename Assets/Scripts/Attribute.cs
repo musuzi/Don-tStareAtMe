@@ -6,24 +6,25 @@ using UnityEngine;
 public class Attribute : MonoBehaviour
 {
     [Header("属性")]
+    [Header("生命值")]
     public float MaxHealth;
     public float Health;
-
+    [Header( "精神值")]
     public float MaxSan;
     public float San;
-
+    [Header("伤害")]
     public float PhyDamage;
     public float MaDamage;
-
+    [Header("闪避率与防御值")]
     public float MissRate;
     public float PhyDenfend;
     public float MaDenfend;
-
+    [Header("速度")]
     public float Speed;
-
+    [Header("暴击")]
     public float CriticalRate;
     public float CriticalDamageMagnification;
-
+    [Header("无敌帧时长")]
     public float invulnerableDuration;
 
     public float MaxinvulnerableDuration;
