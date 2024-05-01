@@ -20,13 +20,13 @@ public class Attribute : MonoBehaviour
     public float PhyDenfend;
     public float MaDenfend;
     [Header("速度")]
-    public float Speed;
+    /*[Range(0f,30f)]*/public float Speed;
     [Header("暴击")]
     public float CriticalRate;
     public float CriticalDamageMagnification;
     [Header("无敌帧时长")]
     public float invulnerableDuration;
-
+    [Space]
     public float MaxinvulnerableDuration;
     public float invulnerableCounter;
     public bool invulnerable;
