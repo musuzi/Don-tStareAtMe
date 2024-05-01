@@ -6,10 +6,10 @@ using Pathfinding;
 
 public class EnemyAutoMove : MonoBehaviour
 {
+    Transform player;
     [Header("Ñ°Â·²ÎÊý")]
     public UnityEvent OnAttack;
     public UnityEvent<Vector2> OnMovement;
-    [SerializeField] private Transform player;
     [SerializeField] private float chaseDistance;
     [SerializeField] private float attackDistance;
 
@@ -22,6 +22,7 @@ public class EnemyAutoMove : MonoBehaviour
     private void Awake()
     {
         seeker = GetComponent<Seeker>();
+        player = FindObjectOfType<PlayerMove>().transform;
     }
 
     private void AutoPath()
