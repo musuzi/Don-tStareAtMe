@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a26b98f69af9f84a93cb468a05cb964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 0
+  MaxHealth: 500
   Health: 0
   MaxSan: 0
   San: 0

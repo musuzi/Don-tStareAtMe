@@ -35,4 +35,19 @@ public class Bullet : MonoBehaviour
     {
         StartCoroutine(ReleaseCoroutine());
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "HealthController" && collision.transform.parent.tag == "Enemy")
+        {
+            Debug.Log("TAKEDAMAGE!");
+            HealthControll victimHealthControll = collision.gameObject.GetComponent<HealthControll>();
+
+            if(victimHealthControll != null)
+            {
+                victimHealthControll.TakeDamage(playerAttribute);
+                bulletsPool.Release(gameObject);
+            }
+        }
+    }
 }

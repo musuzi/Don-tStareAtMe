@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6920610448749363774}
   m_Layer: 0
   m_Name: testRemoteWeapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb57ac5857766f45806ea5e942d12af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponBullet: {fileID: 5461477815298325398, guid: f485742c39bde6a4c826a4e1567475a1, type: 3}
+  fireFrequency: 1
+  canFire: 0
+  canFireCounter: 0
   playerAttribute: {fileID: 0}
   WeaponAdditionAttritube: {fileID: 0}
   animator: {fileID: 0}
-  weaponBullet: {fileID: 5461477815298325398, guid: f485742c39bde6a4c826a4e1567475a1, type: 3}
-  poolParent: {fileID: 0}
-  fireFrequency: 0
-  canFire: 0
-  canFireCounter: 0
+  playerDirection: {fileID: 0}
