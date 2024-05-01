@@ -1,51 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public ObjectPool<GameObject> pool;
-    public GameObject aaa;
+    public float existTime;
+    public float FlySpeed;
+    public Vector2 fireDir;
+    public Attribute playerAttribute;
 
-    private void Awake()
+    public Rigidbody2D rigidbody2;
+    public ObjectPool<GameObject> bulletsPool;
+
+    public void Awake()
     {
-        pool = new ObjectPool<GameObject>(createFunc,actionOnGet,actionOnRelease,actionOnDestroy,true,10,100);
+        rigidbody2 = GetComponent<Rigidbody2D>();
     }
 
-    private GameObject createFunc()
+    private void Update()
     {
-        GameObject obj = Instantiate(aaa,transform);
-
-        return obj;
-    }
-    private void actionOnDestroy(GameObject @object)
-    {
-        Destroy(@object);
+        rigidbody2.velocity = FlySpeed * fireDir;
     }
 
-    private void actionOnRelease(GameObject @object)
+    IEnumerator ReleaseCoroutine()
     {
-        @object.SetActive(false);
+        yield return new WaitForSeconds(existTime);
+        bulletsPool.Release(gameObject);
     }
 
-    private void actionOnGet(GameObject @object)
+    public void OnReleaseCoroutineStar()
     {
-        @object.SetActive(true);
-    }
-
-    
-
-    void Start()
-    {
-        pool.Get();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartCoroutine(ReleaseCoroutine());
     }
 }

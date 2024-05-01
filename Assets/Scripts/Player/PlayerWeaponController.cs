@@ -15,15 +15,16 @@ public class PlayerWeaponController : MonoBehaviour
     {
         playerDirection = transform.parent.gameObject.GetComponent<PlayerDirection>();
     }
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         Controllrotate();
+
+        if(Input.GetMouseButtonDown(0)) 
+        {
+            PlayerAttack();
+        }
     }
 
     public void PlayerAttack()

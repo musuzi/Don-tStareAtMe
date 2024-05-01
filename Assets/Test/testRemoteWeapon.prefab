@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8000169391528037260}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130,6 +130,7 @@ MonoBehaviour:
   WeaponAdditionAttritube: {fileID: 0}
   animator: {fileID: 0}
   weaponBullet: {fileID: 5461477815298325398, guid: f485742c39bde6a4c826a4e1567475a1, type: 3}
+  poolParent: {fileID: 0}
   fireFrequency: 0
   canFire: 0
   canFireCounter: 0

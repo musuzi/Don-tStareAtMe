@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4160877662089562877}
   - component: {fileID: 675530211085506182}
   - component: {fileID: 1188627075473410519}
-  - component: {fileID: 8831894967617759135}
+  - component: {fileID: 4707411528763971670}
   m_Layer: 0
   m_Name: TestWeapon
   m_TagString: Untagged
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttribute: {fileID: 0}
   WeaponAdditionAttritube: {fileID: 4160877662089562877}
-  animator: {fileID: 8831894967617759135}
+  animator: {fileID: 0}
 --- !u!68 &1188627075473410519
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!95 &8831894967617759135
+--- !u!95 &4707411528763971670
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
