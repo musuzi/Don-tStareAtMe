@@ -25,6 +25,13 @@ public class EnemySpawner : MonoBehaviour
     }
     public List<Wave> Waves;
     public int currentWaveCount;
+
+    [Header("生成敌人属性")]
+    float spawnTimer;
+    public int eneminesAlives;
+    public int maxEnemines;
+    public bool maxEneminesReached = false;
+    public float waveInterval;
     void CalculateWaveQuota()//计算每波的敌人数量
     {
         int currentWaveQuota = 0;
@@ -35,26 +42,61 @@ public class EnemySpawner : MonoBehaviour
         Waves[currentWaveCount].waveQuota = currentWaveQuota;
         Debug.LogWarning(currentWaveQuota);
     }
+    private void Update()
+    {
+        if (currentWaveCount < Waves.Count && Waves[currentWaveCount].spawnCount==0)
+        {
+            StartCoroutine(BeginNexWave());
+        }
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer > Waves[currentWaveCount].spawnInterval)
+        {spawnTimer=0;SpawnEnemeies(); }
+    }
     private void Start()
     {
         CalculateWaveQuota();
-        SpawnEnemeies();
     }
+
+    IEnumerator BeginNexWave()
+    {
+        yield return new WaitForSeconds(waveInterval);
+        if (currentWaveCount < Waves.Count - 1)
+        {
+            currentWaveCount++;
+            CalculateWaveQuota() ;
+        }
+    }
+
+
     void SpawnEnemeies()
     {
-        if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota)
+        if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota&&!maxEneminesReached)
         {
             foreach(var enemyGroup in Waves[currentWaveCount].enemyGroups)
             {
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
+                    if (eneminesAlives >= maxEnemines)
+                    {
+                        maxEneminesReached = true;
+                        return;
+                    }
                     Vector2 spawnPosition = new Vector2(player.position.x + Random.Range(-50f, 50f), player.position.y + Random.Range(-50f, 50f));
                     Instantiate(enemyGroup.enemyprefabs, spawnPosition, Quaternion.identity);
 
                     enemyGroup.spawnCount++;
                     Waves[currentWaveCount].spawnCount++;
+                    eneminesAlives++;
                 }
             }
         }
+        if (eneminesAlives < maxEnemines)
+        {
+            maxEneminesReached = false;
+        }
+    }
+    public void OnenemyKilled()
+    {
+        eneminesAlives--;
     }
 }
