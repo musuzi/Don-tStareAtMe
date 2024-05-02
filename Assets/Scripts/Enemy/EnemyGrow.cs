@@ -5,14 +5,12 @@ using UnityEngine;
 public class EnemyGrow : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Attribute at;
+    public static int  level;
 
-    // Update is called once per frame
-    void Update()
+
+    private void Awake()
     {
-        
+        at=GetComponent<Attribute>();
     }
 }
