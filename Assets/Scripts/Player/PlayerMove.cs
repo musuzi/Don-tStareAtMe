@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
         Move_x = Input.GetAxis("Horizontal");
         Move_y = Input.GetAxis("Vertical");
         Vector2 Direction = new Vector2(Move_x, Move_y).normalized;
-        rb.velocity = Direction * playerAttribute.Speed;
+        Vector2 newPosition = rb.position + Direction * playerAttribute.Speed * Time.fixedDeltaTime;
+        rb.MovePosition(newPosition);
     }
 }
