@@ -12,7 +12,7 @@ public class CameraControlor : MonoBehaviour
         {
             Vector3 desiredPosition = Lookat.transform.position;
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smooth);
-            smoothedPosition.z = -10;
+            smoothedPosition.z = -2;
             transform.position = smoothedPosition;
         }
 

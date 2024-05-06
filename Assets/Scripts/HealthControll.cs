@@ -23,6 +23,14 @@ public class HealthControll : MonoBehaviour
                 characterAttribute.invulnerable = false;
             }
         }
+        if(characterAttribute.Health<=0&& transform.parent.gameObject.tag=="Player" )
+        {
+            Debug.Log("PlayerDie");
+        }
+        if (characterAttribute.Health <= 0 && transform.parent.gameObject.tag == "Enemy")
+        {
+            Debug.Log("EnemyDie");
+        }
     }
 
     public void TakeDamage(Attribute attacker)

@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     public int currentWaveCount;
 
     [Header("生成敌人属性")]
-    float spawnTimer;
+    float spawnTimer=0;
     public int eneminesAlives;
     public int maxEnemines;
     public bool maxEneminesReached = false;
@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
         }
         spawnTimer += Time.deltaTime;
         if (spawnTimer > Waves[currentWaveCount].spawnInterval)
-        {spawnTimer=0;SpawnEnemeies(); }
+        {spawnTimer=0;  SpawnEnemeies(); }
     }
     private void Start()
     {
@@ -72,17 +72,23 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota&&!maxEneminesReached)
         {
-            foreach(var enemyGroup in Waves[currentWaveCount].enemyGroups)
+
+            foreach (var enemyGroup in Waves[currentWaveCount].enemyGroups)
             {
+
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
+
                     if (eneminesAlives >= maxEnemines)
                     {
+
                         maxEneminesReached = true;
                         return;
                     }
-                    Vector2 spawnPosition = new Vector2(player.position.x + Random.Range(-50f, 50f), player.position.y + Random.Range(-50f, 50f));
+
+                    Vector2 spawnPosition = new Vector2(player.position.x + Random.Range(-6f, 6f), player.position.y + Random.Range(-6f, 6f));
                     Instantiate(enemyGroup.enemyprefabs, spawnPosition, Quaternion.identity);
+
 
                     enemyGroup.spawnCount++;
                     Waves[currentWaveCount].spawnCount++;

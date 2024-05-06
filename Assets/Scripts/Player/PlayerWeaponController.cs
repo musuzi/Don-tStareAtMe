@@ -20,7 +20,6 @@ public class PlayerWeaponController : MonoBehaviour
     void Update()
     {
         Controllrotate();
-
         if(Input.GetMouseButtonDown(0)) 
         {
             PlayerAttack();
