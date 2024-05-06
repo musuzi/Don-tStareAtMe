@@ -143,4 +143,16 @@ private void Awake()
 
         invulnerableDuration -= attributeDecrease.invulnerableDuration;
     }
+
+    private void ObjectDie()
+    {
+        if(Health<=0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    private void Update()
+    {
+        ObjectDie();
+    }
 }
