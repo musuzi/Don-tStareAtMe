@@ -144,4 +144,9 @@ private void Awake()
         invulnerableDuration -= attributeDecrease.invulnerableDuration;
     }
 
+
+    public void ObjectDestroy()
+    {
+        Destroy(gameObject);
+    }
 }

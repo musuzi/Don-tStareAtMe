@@ -42,32 +42,39 @@ public class EnemySpawner : MonoBehaviour
         Waves[currentWaveCount].waveQuota = currentWaveQuota;
         Debug.LogWarning(currentWaveQuota);
     }
+
+
     private void Update()
     {
-        if (currentWaveCount < Waves.Count && Waves[currentWaveCount].spawnCount==0)
+        if (currentWaveCount < Waves.Count && Waves[currentWaveCount].spawnCount==0&&eneminesAlives==0)
         {
             StartCoroutine(BeginNexWave());
         }
         spawnTimer += Time.deltaTime;
+        Debug.LogWarning(spawnTimer);
         if (spawnTimer > Waves[currentWaveCount].spawnInterval)
-        {spawnTimer=0;  SpawnEnemeies(); }
-    }
-    private void Start()
-    {
-        CalculateWaveQuota();
+        { Debug.LogWarning(spawnTimer); spawnTimer=0;  SpawnEnemeies(); }
     }
 
-    IEnumerator BeginNexWave()
+
+    private void Start()
+    {
+        eneminesAlives = 0;
+        CalculateWaveQuota();
+    }
+    //开始下一波
+     IEnumerator BeginNexWave()
     {
         yield return new WaitForSeconds(waveInterval);
-        if (currentWaveCount < Waves.Count - 1)
+        if (currentWaveCount < Waves.Count - 1  )
         {
+            
             currentWaveCount++;
             CalculateWaveQuota() ;
         }
     }
 
-
+    //生成敌人
     void SpawnEnemeies()
     {
         if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota&&!maxEneminesReached)
@@ -91,6 +98,7 @@ public class EnemySpawner : MonoBehaviour
 
 
                     enemyGroup.spawnCount++;
+                    Debug.LogWarning(    enemyGroup.spawnCount);
                     Waves[currentWaveCount].spawnCount++;
                     eneminesAlives++;
                 }
@@ -101,8 +109,7 @@ public class EnemySpawner : MonoBehaviour
             maxEneminesReached = false;
         }
     }
-    public void OnenemyKilled()
-    {
-        eneminesAlives--;
-    }
+
+    //敌人 死亡后
+  
 }

@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class HealthControll : MonoBehaviour
 {
     public Attribute characterAttribute;
+    public UnityEvent ObjectOnPlayerDie;
+    public UnityEvent ObjectOnEnemyDie;
+
 
     private void Awake()
     {
         characterAttribute = this.GetComponentInParent<Attribute>();
+
     }
 
     // Update is called once per frame
@@ -25,11 +29,11 @@ public class HealthControll : MonoBehaviour
         }
         if(characterAttribute.Health<=0&& transform.parent.gameObject.tag=="Player" )
         {
-            Debug.Log("PlayerDie");
+            ObjectOnPlayerDie.Invoke();
         }
         if (characterAttribute.Health <= 0 && transform.parent.gameObject.tag == "Enemy")
         {
-            Debug.Log("EnemyDie");
+            ObjectOnEnemyDie.Invoke();
         }
     }
 
@@ -39,7 +43,7 @@ public class HealthControll : MonoBehaviour
         {
             if(Probability.SetProbabilityEventSingle(characterAttribute.MissRate))
             {
-                Debug.Log("miss!!");
+                Debug.LogWarning("miss!!");
                 TriggerInvulnerable();
                 return;
             }
@@ -71,6 +75,7 @@ public class HealthControll : MonoBehaviour
             characterAttribute.invulnerableCounter = characterAttribute.invulnerableDuration;
         }
     }
+
 
     //private void OnTriggerEnter2D(Collider2D collision)
     //{

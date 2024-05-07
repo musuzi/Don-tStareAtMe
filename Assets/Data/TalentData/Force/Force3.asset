@@ -17,7 +17,7 @@ MonoBehaviour:
   talentID: 0
   talentType: 0
   talentSprite: {fileID: 0}
-  MaxHealth: 0
+  MaxHealth: 100
   Health: 0
   MaxSan: 0
   San: 0
