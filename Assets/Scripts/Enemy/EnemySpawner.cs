@@ -40,20 +40,19 @@ public class EnemySpawner : MonoBehaviour
             currentWaveQuota += enemyGroup.enemyCount;
         }
         Waves[currentWaveCount].waveQuota = currentWaveQuota;
-        Debug.LogWarning(currentWaveQuota);
     }
 
 
     private void Update()
     {
-        if (currentWaveCount < Waves.Count && Waves[currentWaveCount].spawnCount==0&&eneminesAlives==0)
+        if (currentWaveCount < Waves.Count-1 && Waves[currentWaveCount].spawnCount==0&&eneminesAlives==0)
         {
             StartCoroutine(BeginNexWave());
         }
         spawnTimer += Time.deltaTime;
-        Debug.LogWarning(spawnTimer);
+
         if (spawnTimer > Waves[currentWaveCount].spawnInterval)
-        { Debug.LogWarning(spawnTimer); spawnTimer=0;  SpawnEnemeies(); }
+        { spawnTimer=0;  SpawnEnemeies(); }
     }
 
 
@@ -85,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
 
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
-
+                    Debug.LogWarning("生成敌人中");
                     if (eneminesAlives >= maxEnemines)
                     {
 
@@ -98,7 +97,6 @@ public class EnemySpawner : MonoBehaviour
 
 
                     enemyGroup.spawnCount++;
-                    Debug.LogWarning(    enemyGroup.spawnCount);
                     Waves[currentWaveCount].spawnCount++;
                     eneminesAlives++;
                 }
