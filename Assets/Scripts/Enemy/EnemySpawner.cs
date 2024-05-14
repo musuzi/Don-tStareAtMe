@@ -11,16 +11,16 @@ public class EnemySpawner : MonoBehaviour
     {
         public string waveName;
         public List<EnemyGroup> enemyGroups;//敌人信息
-        public int waveQuota;//敌人总数
+        public int waveQuota;//波次中生成的敌人总数
         public float spawnInterval;//波次间隔
-        public int spawnCount;//
+        public int spawnCount;//波次中已经生成的敌人
     }
     [System.Serializable]
     public class EnemyGroup
     {
         public string enemyName;
-        public int enemyCount;
-        public int spawnCount;
+        public int enemyCount;//要在此wave中生成的enemy数量
+        public int spawnCount;//实际生成的数量
         public GameObject enemyprefabs;
     }
     public List<Wave> Waves;
@@ -32,16 +32,12 @@ public class EnemySpawner : MonoBehaviour
     public int maxEnemines;
     public bool maxEneminesReached = false;
     public float waveInterval;
-    void CalculateWaveQuota()//计算每波的敌人数量
-    {
-        int currentWaveQuota = 0;
-        foreach(var enemyGroup in Waves[currentWaveCount].enemyGroups)
-        {
-            currentWaveQuota += enemyGroup.enemyCount;
-        }
-        Waves[currentWaveCount].waveQuota = currentWaveQuota;
-    }
 
+    private void Start()
+    {
+        eneminesAlives = 0;
+        CalculateWaveQuota();
+    }
 
     private void Update()
     {
@@ -56,11 +52,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-    private void Start()
-    {
-        eneminesAlives = 0;
-        CalculateWaveQuota();
-    }
+   
     //开始下一波
      IEnumerator BeginNexWave()
     {
@@ -72,11 +64,20 @@ public class EnemySpawner : MonoBehaviour
             CalculateWaveQuota() ;
         }
     }
+    void CalculateWaveQuota()//计算每波的敌人数量
+    {
+        int currentWaveQuota = 0;
+        foreach (var enemyGroup in Waves[currentWaveCount].enemyGroups)
+        {
+            currentWaveQuota += enemyGroup.enemyCount;
+        }
+        Waves[currentWaveCount].waveQuota = currentWaveQuota;
+    }
 
     //生成敌人
     void SpawnEnemeies()
     {
-        if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota&&!maxEneminesReached)
+        if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota&&!maxEneminesReached)//判断生成数量是否小于
         {
 
             foreach (var enemyGroup in Waves[currentWaveCount].enemyGroups)
