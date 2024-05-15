@@ -77,15 +77,14 @@ public class EnemySpawner : MonoBehaviour
     //生成敌人
     void SpawnEnemeies()
     {
-        if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota&&!maxEneminesReached)//判断生成数量是否小于
+        if (Waves[currentWaveCount].spawnCount < Waves[currentWaveCount].waveQuota&&!maxEneminesReached)//判断生成数量是否小于该波次中应该生成的敌人总数，以及是否达到最大敌人的数量
         {
 
-            foreach (var enemyGroup in Waves[currentWaveCount].enemyGroups)
+            foreach (var enemyGroup in Waves[currentWaveCount].enemyGroups)//遍历Wave列表中的enemyGroups
             {
 
-                if (enemyGroup.spawnCount < enemyGroup.enemyCount)
+                if (enemyGroup.spawnCount < enemyGroup.enemyCount)//如果敌人已经生成的数量小于
                 {
-                    Debug.LogWarning("生成敌人中");
                     if (eneminesAlives >= maxEnemines)
                     {
 

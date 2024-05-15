@@ -2670,6 +2670,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e022ea8e0fdf2f4eb1382391122e763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HpAddition: 0
+  SanAddition: 0
+  PhyDamageAddition: 0
+  MaDamageAddition: 0
+  PhyDenfendAddition: 0
+  MaDenfendAddition: 0
 --- !u!1 &1044048981
 GameObject:
   m_ObjectHideFlags: 0
@@ -4802,6 +4808,14 @@ PrefabInstance:
     - target: {fileID: 2916763993939751830, guid: 7b55784a8e94ddb49a263d9fe4c7d47c, type: 3}
       propertyPath: Waves.Array.data[2].enemyGroups.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916763993939751830, guid: 7b55784a8e94ddb49a263d9fe4c7d47c, type: 3}
+      propertyPath: Waves.Array.data[0].enemyGroups.Array.data[0].enemyName
+      value: HumanEyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916763993939751830, guid: 7b55784a8e94ddb49a263d9fe4c7d47c, type: 3}
+      propertyPath: Waves.Array.data[0].enemyGroups.Array.data[1].enemyName
+      value: SheepEyes
       objectReference: {fileID: 0}
     - target: {fileID: 2916763993939751830, guid: 7b55784a8e94ddb49a263d9fe4c7d47c, type: 3}
       propertyPath: Waves.Array.data[0].enemyGroups.Array.data[1].enemyCount

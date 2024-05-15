@@ -5,7 +5,7 @@ using UnityEngine;
 public class FindES : MonoBehaviour
 {
     private EnemySpawner Es;
-
+    public static int TotalEnemiesDied;
     private void Start()
     {
         Es=FindObjectOfType<EnemySpawner>();
@@ -20,6 +20,7 @@ public class FindES : MonoBehaviour
     }
     public void OnenemyKilled()
     {
+        TotalEnemiesDied++;
         Es.eneminesAlives--;
     }
 }
